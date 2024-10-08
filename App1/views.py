@@ -1,12 +1,12 @@
 import requests
 from datetime import datetime
+
 from django.shortcuts import *
 
 def index(request):
-    data = {} 
-
+    data = {}
     if request.method == 'POST':
-        city = request.POST.get('city', '').strip()  
+        city = request.POST.get('city')
         api_key = '7c0390401c2c7a8243c01c653c5b929e'
         
         url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={api_key}'  
@@ -25,5 +25,5 @@ def index(request):
                     'pressure': f' {list_of_data["main"]["pressure"]} hPa', 
                     'time': time
         }
-    print(data)
+        return redirect('home')
     return render(request, 'index.html', {'data': data})
