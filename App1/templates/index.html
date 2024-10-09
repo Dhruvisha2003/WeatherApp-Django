@@ -35,8 +35,8 @@
             </div>
             <p class="weather__temperature">{{ data.temperature }}</p>
             <div class="weather__minmax">
-                <p>Min: {{ data.min_temp }}&#176</p>
-                <p>Max: {{ data.max_temp }}&#176</p>
+                <p>Min: {{ data.min_temp }}</p>
+                <p>Max: {{ data.max_temp }}</p>
             </div>
 
             <div class="weather__info">
@@ -44,7 +44,7 @@
                     <i class="fa-solid fa-temperature-full"></i>
                     <div>
                         <p>Real Feel</p>
-                        <p class="weather__realfeel">{{ data.real_feel }}&#176</p>
+                        <p class="weather__realfeel">{{ data.real_feel }}</p>
                     </div>
                 </div>
                 <div class="weather__card">
@@ -75,6 +75,8 @@
         <div class="error">{{ data.error }}</div>
         {% endif %}
     </div>
+
+
     <script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script>
     <!-- <script src="../static/app.js"></script> -->
 </body>

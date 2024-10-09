@@ -4,8 +4,12 @@ from datetime import datetime
 from django.shortcuts import *
 
 def index(request):
+    print('method ==== ',request.method)
     data = {}
+    print('Get data ===== ',data)
     if request.method == 'POST':
+        print('Get method ==== ',request.method)
+        print('Data ======== ',data)
         city = request.POST.get('city')
         api_key = '7c0390401c2c7a8243c01c653c5b929e'
         
@@ -13,7 +17,7 @@ def index(request):
         list_of_data = requests.get(url).json()
         current_time = datetime.now()
         time = current_time.strftime("%A, %B %d %Y, %H:%M:%S %p")
-    
+
         data = {
                     'city': city,
                     'temperature': f'Temperature: {list_of_data["main"]["temp"]} °C',
@@ -25,5 +29,7 @@ def index(request):
                     'pressure': f' {list_of_data["main"]["pressure"]} hPa', 
                     'time': time
         }
-        return redirect('home')
+        print(data)
+        # request.session['city_data'] = data
+        # return redirect('home')
     return render(request, 'index.html', {'data': data})
