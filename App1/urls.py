@@ -18,5 +18,6 @@ from django.urls import path
 from App1 import views
 
 urlpatterns = [
-    path('', views.index,name='home'),
+    path('', views.home ,name='home'),
+    path('<str:city>/', views.index,name='getcity'),
 ]

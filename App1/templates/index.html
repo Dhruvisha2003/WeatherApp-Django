@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="icon" href="../static/img/weather-app-icon-vector-45889136-removebg-preview.png">
+    <link rel="icon" href="../static/img/weather-app-icon.png">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
@@ -31,7 +31,7 @@
             <div class="weather__datetime">{{ data.time }}</div>
             <div class="weather__forecast">Forecast information here</div>
             <div class="weather__icon">
-               <img src="../static/img/40d0826ad647e45505eeb400344a0d44-removebg-preview.png" alt="">
+               <img src="../static/img/icon.png" alt="">
             </div>
             <p class="weather__temperature">{{ data.temperature }}</p>
             <div class="weather__minmax">
@@ -70,12 +70,16 @@
                 </div>
             </div>
         </div>
-        {% endif %}
-        {% if data.error %}
-        <div class="error">{{ data.error }}</div>
-        {% endif %}
-    </div>
-
+       {% endif %}
+       
+       {% if messages %}
+       <ul class="messages mt-3">
+           {% for message in messages %}
+           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+           {% endfor %}
+       </ul>
+       {% endif %}
+   </div>
 
     <script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script>
     <!-- <script src="../static/app.js"></script> -->
